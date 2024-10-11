@@ -6,6 +6,7 @@ public class IdeaDTO {
 	private String content;
 	private String writer;
 	private String indate;
+	public String getNum;
 	
 	public int getNum() {
 		return num;

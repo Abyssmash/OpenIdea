@@ -5,15 +5,20 @@ import java.awt.Color;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import dao.IdeaDAO;
+import dto.IdeaDTO;
 // 객체, 상속, 인터페이스를 습득하기 위해 swing을 이용해봄
+// implements:  ActionListener를 구현했다 
 public class MainFrame extends JFrame implements ActionListener{
-	
+									// 인터페이스 구현: 기능을 처리하기 위해 
 	private JLabel title = new JLabel("Ideabank");
 	private JTextField input = new JTextField();
 	private JButton btn = new JButton("Save");
@@ -39,19 +44,32 @@ public class MainFrame extends JFrame implements ActionListener{
 		//this.add(btn1,"East");
 		//this.add(btn2,"West");
 		
+		// 리스너 등록
 		btn.addActionListener(this);
+		input.addActionListener(this);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		// this와 super 무엇을 써도 상관없음
 	}
-ddddddddddd
+	private void loadDB() {
+		ArrayList<IdeaDTO> ideadto = IdeaDAO.selectAll();
+		for(IdeaDTO i : ideadto) {
+			wordList.add(i.getNum+" : "+i.getTitle());
+		}
+	}
 	@Override	// 매서드 재정의
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource()==btn) {
-			System.out.println("버튼이 클릭되었다.");
+		if(e.getSource()==btn || e.getSource()==input) {
+			//System.out.println("버튼이 클릭되었다.");
 			String t = input.getText();
-			System.out.println("입력하신 글은 : "+t);
+			//System.out.println("입력하신 글은 : "+t);
+			input.setText("");
+			//wordList.add(t);
+			
+			IdeaDTO dto = new IdeaDTO();
+			dto.setTitle(t);
+			IdeaDAO.insert(dto);
 		}
 	}
 }
