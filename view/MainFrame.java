@@ -22,7 +22,6 @@ public class MainFrame extends JFrame implements ActionListener{
 	private JButton btn2 = new JButton("West");
 	private JPanel centerP = new JPanel();
 	// panel은 컨테이너이면서 컴포넌트이다. 기본 레이아웃이 flowLayout
-	vvvvddddfffffffffffffffffffffff
 	public MainFrame() {
 					// 가로 세로 x축 y축
 		this.setBounds(100, 100, 300, 500);
@@ -45,7 +44,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		// this와 super 무엇을 써도 상관없음
 	}
-
+ddddddddddd
 	@Override	// 매서드 재정의
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
