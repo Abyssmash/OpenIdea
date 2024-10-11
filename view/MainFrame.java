@@ -22,7 +22,7 @@ public class MainFrame extends JFrame implements ActionListener{
 	private JLabel title = new JLabel("Ideabank");
 	private JTextField input = new JTextField();
 	private JButton btn = new JButton("Save");
-	private List wordList = new List(5,true);
+	private List wordList = new List(5,false);
 	private JButton btn1 = new JButton("East");
 	private JButton btn2 = new JButton("West");
 	private JPanel centerP = new JPanel();
@@ -50,6 +50,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		// this와 super 무엇을 써도 상관없음
+		loadDB();
 	}
 	private void loadDB() {
 		ArrayList<IdeaDTO> ideadto = IdeaDAO.selectAll();
