@@ -14,7 +14,7 @@ public class IdeaService {
 	private IdeaDAO ideadao = IdeaDAO.getInstance();
 
 	public IdeaService() {
-		// menu();
+		menu();
 		// TODO Auto-generated constructor stub
 	}
 	private void menu() {
