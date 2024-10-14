@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -17,7 +19,8 @@ import dao.IdeaDAO;
 import dto.IdeaDTO;
 // 객체, 상속, 인터페이스를 습득하기 위해 swing을 이용해봄
 // implements:  ActionListener를 구현했다 
-public class MainFrame extends JFrame implements ActionListener{
+public class MainFrame extends JFrame 
+implements ActionListener, MouseListener{
 									// 인터페이스 구현: 기능을 처리하기 위해 
 	private JLabel title = new JLabel("Ideabank");
 	private JTextField input = new JTextField();
@@ -27,6 +30,9 @@ public class MainFrame extends JFrame implements ActionListener{
 	private JButton btn2 = new JButton("West");
 	private JPanel centerP = new JPanel();
 	// panel은 컨테이너이면서 컴포넌트이다. 기본 레이아웃이 flowLayout
+	
+	private IdeaDAO ideaDao = IdeaDAO.getInstance();
+	// private IdeaService is = new IdeaService();
 	public MainFrame() {
 					// 가로 세로 x축 y축
 		this.setBounds(100, 100, 300, 500);
@@ -53,7 +59,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		loadDB();
 	}
 	private void loadDB() {
-		ArrayList<IdeaDTO> ideadto = IdeaDAO.selectAll();
+		ArrayList<IdeaDTO> ideadto = ideaDao.selectAll();
 		for(IdeaDTO i : ideadto) {
 			wordList.add(i.getNum+" : "+i.getTitle());
 		}
@@ -70,7 +76,33 @@ public class MainFrame extends JFrame implements ActionListener{
 			
 			IdeaDTO dto = new IdeaDTO();
 			dto.setTitle(t);
-			IdeaDAO.insert(dto);
+			ideaDao.insert(dto);
 		}
 	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+	
 }
