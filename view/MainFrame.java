@@ -30,7 +30,7 @@ implements ActionListener, MouseListener{
 	private JButton btn2 = new JButton("West");
 	private JPanel centerP = new JPanel();
 	// panel은 컨테이너이면서 컴포넌트이다. 기본 레이아웃이 flowLayout
-	
+	//....
 	private IdeaDAO ideaDao = IdeaDAO.getInstance();
 	// private IdeaService is = new IdeaService();
 	public MainFrame() {
